@@ -13,12 +13,12 @@ public class SecurityConfig {
         http
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .anyRequest().authenticated()  // 모든 요청에 대해 인증 필요
+                                .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2Login ->
                         oauth2Login
                                 .loginPage("/oauth2/authorization/github")  // GitHub 로그인 페이지로 이동
-                                .defaultSuccessUrl("/welcome", true) // 로그인 후 리다이렉트 경로
+//                                .defaultSuccessUrl("/login/oauth2/code/github", true) // 로그인 후 리다이렉트 경로
                 )
                 .logout(logout -> logout.logoutSuccessUrl("/"));  // 로그아웃 후 리다이렉트될 URL
 
